@@ -1,3 +1,22 @@
+/*
+Lesson : was enforcing a weird ordering in which blocksizes were being checked(reqd size to max available size) but that's wrong because the order of checking for free space should be from left to right
+Once I fixed that way of checking the hashmap for free space, it worked!
+
+algo : 
+- for each file from the back(id of the file denoted by currIdxToSee), from the hashmap where key = block_size till the max possible block_size, get the leftmost index that can accommodate our file
+- move the file to that location
+- update the hashmap with remaining free space
+
+improvements : 
+- if I tracked a hashmap that maps starting index of a contiguous freespace to the size of that freespace, searching would've been easy. For each file, we loop from the beginning of this hashmap
+till where the file starts(rstart) and once we come across a freespace whose size >= file size, we break
+- then put the file in the correct location
+- update the hashmap after file movement
+- this would've been much more optimal
+- right now from block size to max possible block size, we check each and every free space and get the minimum, which is ~O(n^2)
+- but here we could do it in O(n)
+*/
+
 #include <iostream>
 #include <string>
 #include <vector>
