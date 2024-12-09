@@ -1,5 +1,5 @@
 /*
-Lesson : was enforcing a weird ordering in which blocksizes were being checked(reqd size to max available size) but that's wrong because the order of checking for free space should be from left to right
+Lesson : was enforcing a weird ordering in which blocksizes were being checked but the order of checking for free space should be from left to right
 Once I fixed that way of checking the hashmap for free space, it worked!
 
 algo : 
